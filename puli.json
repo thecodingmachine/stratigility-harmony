@@ -69,6 +69,10 @@
             "installer": "composer",
             "env": "dev"
         },
+        "thecodingmachine/middleware-list-universal-module": {
+            "install-path": "vendor/thecodingmachine/middleware-list-universal-module",
+            "installer": "composer"
+        },
         "webmozart/assert": {
             "install-path": "vendor/webmozart/assert",
             "installer": "composer",
