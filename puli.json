@@ -25,12 +25,32 @@
             "installer": "composer",
             "env": "dev"
         },
+        "padraic/humbug_get_contents": {
+            "install-path": "vendor/padraic/humbug_get_contents",
+            "installer": "composer",
+            "env": "dev"
+        },
+        "padraic/phar-updater": {
+            "install-path": "vendor/padraic/phar-updater",
+            "installer": "composer",
+            "env": "dev"
+        },
+        "paragonie/random_compat": {
+            "install-path": "vendor/paragonie/random_compat",
+            "installer": "composer",
+            "env": "dev"
+        },
         "psr/http-message": {
             "install-path": "vendor/psr/http-message",
             "installer": "composer"
         },
         "psr/log": {
             "install-path": "vendor/psr/log",
+            "installer": "composer",
+            "env": "dev"
+        },
+        "puli/cli": {
+            "install-path": "vendor/puli/cli",
             "installer": "composer",
             "env": "dev"
         },
@@ -41,6 +61,11 @@
         },
         "puli/discovery": {
             "install-path": "vendor/puli/discovery",
+            "installer": "composer",
+            "env": "dev"
+        },
+        "puli/manager": {
+            "install-path": "vendor/puli/manager",
             "installer": "composer",
             "env": "dev"
         },
@@ -64,6 +89,26 @@
             "installer": "composer",
             "env": "dev"
         },
+        "symfony/console": {
+            "install-path": "vendor/symfony/console",
+            "installer": "composer",
+            "env": "dev"
+        },
+        "symfony/event-dispatcher": {
+            "install-path": "vendor/symfony/event-dispatcher",
+            "installer": "composer",
+            "env": "dev"
+        },
+        "symfony/filesystem": {
+            "install-path": "vendor/symfony/filesystem",
+            "installer": "composer",
+            "env": "dev"
+        },
+        "symfony/polyfill-mbstring": {
+            "install-path": "vendor/symfony/polyfill-mbstring",
+            "installer": "composer",
+            "env": "dev"
+        },
         "symfony/process": {
             "install-path": "vendor/symfony/process",
             "installer": "composer",
@@ -75,6 +120,11 @@
         },
         "webmozart/assert": {
             "install-path": "vendor/webmozart/assert",
+            "installer": "composer",
+            "env": "dev"
+        },
+        "webmozart/console": {
+            "install-path": "vendor/webmozart/console",
             "installer": "composer",
             "env": "dev"
         },

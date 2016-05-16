@@ -9,11 +9,11 @@ use Zend\Stratigility\MiddlewarePipe;
 
 class StratigilityServiceProvider implements ServiceProvider
 {
-    public static function getServices()
+    public function getServices()
     {
         return [
-            Server::class => 'createServer',
-            MiddlewarePipe::class => 'createMiddlewarePipe',
+            Server::class => [self::class, 'createServer'],
+            MiddlewarePipe::class => [self::class, 'createMiddlewarePipe'],
         ];
     }
 
