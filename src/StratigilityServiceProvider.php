@@ -48,14 +48,6 @@ class StratigilityServiceProvider implements ServiceProvider
         foreach ($middlewaresQueue as $middleware) {
             $app->pipe($middleware);
         }
-
-        /* @var $exceptionMiddlewaresQueue \SplPriorityQueue */
-        $exceptionMiddlewaresQueue = $container->get(MiddlewareListServiceProvider::MIDDLEWARES_STRATIGILITY_EXCEPTION_QUEUE);
-
-        foreach ($exceptionMiddlewaresQueue as $middleware) {
-            $app->pipe($middleware);
-        }
-
         return $app;
     }
 }
