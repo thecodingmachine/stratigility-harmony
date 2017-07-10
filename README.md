@@ -8,7 +8,7 @@ This package integrates Stratigility in any [container-interop](https://github.c
 composer require thecodingmachine/stratigility-harmony
 ```
 
-If your container supports autodiscovery by Puli, there is nothing more to do.
+If your container supports autodiscovery by thecodingmachine/discovery, there is nothing more to do.
 Otherwise, you need to register the [`TheCodingMachine\StratigilityServiceProvider`](src/StratigilityServiceProvider.php) and the `TheCodingMachine\MiddlewareListServiceProvider` into your container.
 
 Refer to your framework or container's documentation to learn how to register *service providers*.

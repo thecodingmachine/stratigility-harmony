@@ -19,15 +19,7 @@ class StratigilityServiceProvider implements ServiceProvider
 
     public static function createServer(ContainerInterface $container) : Server
     {
-        // Decode json parameters for POST request
-        if (isset($_SERVER['CONTENT_TYPE']) && strpos($_SERVER['CONTENT_TYPE'], 'json')) {
-            $postdata = file_get_contents('php://input');
-            $postdata = json_decode($postdata, true);
-        } else {
-            $postdata = $_POST;
-        }
-
-        $server = Server::createServer($container->get(MiddlewarePipe::class), $_SERVER, $_GET, $postdata, $_COOKIE, $_FILES);
+        $server = Server::createServer($container->get(MiddlewarePipe::class), $_SERVER, $_GET, $_POST, $_COOKIE, $_FILES);
 
         return $server;
     }
