@@ -37,6 +37,7 @@ class StratigilityServiceProvider implements ServiceProvider
     public static function createMiddlewarePipe(ContainerInterface $container) : MiddlewarePipe
     {
         $app = new MiddlewarePipe();
+        $app->setResponsePrototype(new Response());
         $middlewaresQueue = $container->get(MiddlewareListServiceProvider::MIDDLEWARES_QUEUE);
 
         /* @var $middlewaresQueue \SplPriorityQueue */
