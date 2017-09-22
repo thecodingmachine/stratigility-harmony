@@ -3,19 +3,25 @@
 namespace TheCodingMachine;
 
 use Interop\Container\ContainerInterface;
-use Interop\Container\ServiceProvider;
+use Interop\Container\ServiceProviderInterface;
 use Zend\Diactoros\Response;
 use Zend\Diactoros\Server;
 use Zend\Stratigility\Middleware\NotFoundHandler;
 use Zend\Stratigility\MiddlewarePipe;
 
-class StratigilityServiceProvider implements ServiceProvider
+class StratigilityServiceProvider implements ServiceProviderInterface
 {
-    public function getServices()
+    public function getFactories()
     {
         return [
             Server::class => [self::class, 'createServer'],
             MiddlewarePipe::class => [self::class, 'createMiddlewarePipe'],
+        ];
+    }
+
+    public function getExtensions()
+    {
+        return [
             MiddlewareListServiceProvider::MIDDLEWARES_QUEUE => [self::class, 'registerPageNotFoundMiddleware']
         ];
     }
@@ -48,15 +54,8 @@ class StratigilityServiceProvider implements ServiceProvider
         return $app;
     }
 
-    public static function registerPageNotFoundMiddleware(ContainerInterface $container, callable $previous = null)
+    public static function registerPageNotFoundMiddleware(ContainerInterface $container, \SplPriorityQueue $queue): \SplPriorityQueue
     {
-        if ($previous) {
-            $priorityQueue = $previous();
-            $priorityQueue->insert(new NotFoundHandler(new Response()), MiddlewareOrder::PAGE_NOT_FOUND_LATE);
-            return $priorityQueue;
-        } else {
-            throw new InvalidArgumentException("Could not find declaration for service '".MiddlewareListServiceProvider::MIDDLEWARES_QUEUE."'.");
-        }
-
+        $queue->insert(new NotFoundHandler(new Response()), MiddlewareOrder::PAGE_NOT_FOUND_LATE);
     }
 }
