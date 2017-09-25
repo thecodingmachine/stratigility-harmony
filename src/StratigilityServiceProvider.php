@@ -57,5 +57,6 @@ class StratigilityServiceProvider implements ServiceProviderInterface
     public static function registerPageNotFoundMiddleware(ContainerInterface $container, \SplPriorityQueue $queue): \SplPriorityQueue
     {
         $queue->insert(new NotFoundHandler(new Response()), MiddlewareOrder::PAGE_NOT_FOUND_LATE);
+        return $queue;
     }
 }
