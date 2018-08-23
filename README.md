@@ -5,7 +5,7 @@ This package integrates Stratigility in any [container-interop](https://github.c
 ## Installation
 
 ```
-composer require thecodingmachine/stratigility-harmony
+composer require thecodingmachine/stratigility-harmony ^3
 ```
 
 If your container supports autodiscovery by thecodingmachine/discovery, there is nothing more to do.
@@ -15,21 +15,27 @@ Refer to your framework or container's documentation to learn how to register *s
 
 ## Usage
 
-This module registers 2 services in your container:
+This module registers those services in your container:
 
-- A Zend Diactoros Server under the `Zend\Diactoros\Server` key.
-  Use the `listen` method to answer calls:
+- A Zend RequestHandlerRunner under the `RequestHandlerRunner::class` key.
+  Use the `run` method to answer calls:
   ```php
-  $server = $container->get(Server::class);
-  $server->listen();
+  $runner = $container->get(RequestHandlerRunner::class);
+  $runner->run();
   ```
 
-- A MiddlewarePipe instance under the `Zend\Stratigility\MiddlewarePipe` key.
+- A MiddlewarePipe instance under the `Zend\Stratigility\MiddlewarePipe` key (alias = `RequestHandlerInterface::class`).
   Use this middleware pipe to add your own middlewares:
   ```php
   $middlewarePipe = $container->get(MiddlewarePipe::class);
   $middlewarePipe->pipe($myMiddleware);
   ```
+  
+Several other instances are worth mentionning:
+
+- `SapiStreamEmitter::class` (alias = `EmitterInterface::class`) is used to emit responses
+- `serverRequestFactory`: a factory to create PSR-7 requests (used internally by `RequestHandlerRunner`)
+- `serverRequestErrorResponseGenerator`: a factory to error response (used internally by `RequestHandlerRunner`)
 
 
 ## About the middlewares priority queue
