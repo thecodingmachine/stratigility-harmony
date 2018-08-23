@@ -22,9 +22,17 @@ class StratigilityServiceProvider extends ServiceProvider
     /**
      * @Factory()
      */
-    public static function createRequestHandlerRunner(RequestHandlerInterface $handler, EmitterInterface $emitter, ContainerInterface $container): RequestHandlerRunner
-    {
-        return new RequestHandlerRunner($handler, $emitter, $container->get('serverRequestFactory'), $container->get('serverRequestErrorResponseGenerator'));
+    public static function createRequestHandlerRunner(
+        RequestHandlerInterface $handler,
+        EmitterInterface $emitter,
+        ContainerInterface $container
+    ): RequestHandlerRunner {
+        return new RequestHandlerRunner(
+            $handler,
+            $emitter,
+            $container->get('serverRequestFactory'),
+            $container->get('serverRequestErrorResponseGenerator')
+        );
     }
 
     /**
@@ -72,7 +80,7 @@ class StratigilityServiceProvider extends ServiceProvider
      */
     public static function registerPageNotFoundMiddleware(): NotFoundHandler
     {
-        return new NotFoundHandler(function() {
+        return new NotFoundHandler(function () {
             return new Response();
         });
     }
